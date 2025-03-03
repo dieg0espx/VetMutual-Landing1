@@ -5,19 +5,11 @@ import Footer from "@/components/Footer";
 import "../pages/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { LeadsProvider } from "../context/LeadsContext";
+
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
-  // List of pages where LeadsProvider should be applied
-  const providerPages = ["/dashboard", "/admin"];
-
-  // List of pages where header & footer should be hidden
-  const hiddenPages = ["/dashboard", "/login", "/register", "/admin"];
-
-  const hideLayout = hiddenPages.includes(router.pathname);
-  const useLeadsProvider = providerPages.includes(router.pathname);
 
   return (
     <>
@@ -28,17 +20,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
       </Head>
 
-      {!hideLayout && <Header />}
-      
-      {useLeadsProvider ? (
-        <LeadsProvider>
-          <Component {...pageProps} />
-        </LeadsProvider>
-      ) : (
+      <Header />
         <Component {...pageProps} />
-      )}
-
-      {!hideLayout && <Footer />}
+      <Footer />
     </>
   );
 }
