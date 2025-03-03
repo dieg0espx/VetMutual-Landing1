@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/next"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/cron",
+        "methods": ["GET"]
+      }
+    ],
+    "crons": [
+      {
+        "path": "/api/cron",
+        "schedule": "0 10 * * *"
+      }
+    ]
+  }
