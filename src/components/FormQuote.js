@@ -129,7 +129,7 @@ function FormQuote({bg}) {
               value={formData.name} 
               onChange={handleChange} 
               placeholder="Full Name*" 
-              className="p-3 border rounded-md w-full" 
+              className="p-3 border rounded-[7px] w-full" 
               required 
             />
             <input 
@@ -138,7 +138,7 @@ function FormQuote({bg}) {
               value={formData.phone} 
               onChange={handleChange} 
               placeholder="Phone Number*" 
-              className="p-3 border rounded-md w-full" 
+              className="p-3 border rounded-[7px] w-full" 
               required 
             />
             <input 
@@ -147,7 +147,7 @@ function FormQuote({bg}) {
               value={formData.email} 
               onChange={handleChange} 
               placeholder="Email*" 
-              className="p-3 border rounded-md w-full" 
+              className="p-3 border rounded-[7px] w-full" 
               required 
             />
             <select 
