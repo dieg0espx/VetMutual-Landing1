@@ -94,3 +94,4 @@ export function formatTimestamp(timestamp) {
     // Format: (XXX) XXX-XXXX
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   }
+

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { supabase } from '../utils/supabaseClient';
 import NortonBadge from '../images/nortonBadge.png';
 import Image from "next/image";
+import { formatTimestamp, getStateFullName } from "../utils/helpers";
 
 function FormQuote({bg}) {
     const [formData, setFormData] = useState({
@@ -97,20 +98,59 @@ function FormQuote({bg}) {
       return true;
     };
 
+  
     const handleSubmit = async (e) => {
       e.preventDefault();
-
+    
       if (!validateForm()) return; // Stop submission if validation fails
-
-      const { error } = await supabase.from("leads").insert([formData]);
-
+    
+      const { data, error } = await supabase
+        .from("leads")
+        .insert([formData])
+        .select("*") // Fetch inserted data
+        .single(); // Get only one record
+    
       if (error) {
         setError("Error submitting form: " + error.message);
       } else {
         alert("Form submitted successfully!");
+    
+        // Format SMS Message
+        const smsMessage = `
+        New Lead Received:
+        Name: ${data.name}
+        Phone: ${data.phone}
+        Email: ${data.email}
+        State: ${getStateFullName(data.state)}
+        ${formatTimestamp(new Date().toISOString())[0]} at ${formatTimestamp(new Date().toISOString())[1]}
+        `.trim();
+    
+        // Send SMS
+        sendSMS(smsMessage);
+    
+        // Reset form
         setFormData({ name: "", phone: "", email: "", state: "" });
       }
     };
+    
+    // Function to send SMS
+    async function sendSMS(text) {
+      const response = await fetch("/api/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          to: "+4915213451741",
+        }),
+      });
+    
+      const data = await response.json();
+      console.log(data);
+    }
+    
+
+
+
       
   return (
     <div>
@@ -169,7 +209,7 @@ function FormQuote({bg}) {
           <button type="submit" className={`${bg == 'red'?'bg-darkBlue':'bg-red-600'} mt-4 text-white px-6 py-3 rounded-md w-full hover:bg-red-700"`}>
             Submit
           </button>
-        </form>
+        </form>        
     </div>
   )
 }

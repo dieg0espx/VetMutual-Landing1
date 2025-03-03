@@ -41,8 +41,8 @@ const Container1 = () => {
       {/* Left Section */}
       <div className="space-y-5 md:space-y-0">
         <p className="bg-lightRed w-fit px-5 py-2 rounded-full text-red-500">  <i className="bi bi-bookmark-star mr-2"></i> We Salute You </p>
-        <h1 className="text-[40px] md:text-[60px] font-bold  block">
-          Secure Your Home, <span className="block -mt-5">Protect Your Family</span>
+        <h1 className="text-[40px] md:text-[60px] font-bold block leading-[1.1] md:leading-[1.2]">
+          Secure Your Home, Protect Your Family
         </h1>
         <p className="text-gray-500 w-full md:w-[80%]">
           At VetMutual, we specialize in connecting veterans with personalized, affordable mortgage protection. We partner with hundreds of A+ rated insurance carriers to deliver custom coverage that won’t surprise you with rising premiums.
