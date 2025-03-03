@@ -21,8 +21,11 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <Header />
-        <Component {...pageProps} />
-      <Footer />
+<div className="pt-16">
+  <Component {...pageProps} />
+</div>
+<Footer />
+
     </>
   );
 }

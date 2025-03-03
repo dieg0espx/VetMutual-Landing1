@@ -6,7 +6,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#0E253D] py-4 px-6 flex justify-between items-center relative">
+    <div className="bg-[#0E253D] py-4 px-6 flex justify-between items-center fixed top-0 left-0 w-full z-50">
       {/* Logo */}
       <div className="flex items-center">
         <Image src={fullLogo} alt="VetMutual" className="h-10" />
@@ -41,7 +41,7 @@ const Header = () => {
           <a href="#" className="py-2 hover:text-gray-300">Contact</a>
         </div>
       )}
-    </header>
+    </div>
   );
 };
 
