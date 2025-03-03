@@ -154,7 +154,7 @@ function FormQuote({bg}) {
       
   return (
     <div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mt-[30px] md:mt-0">
           <h2 className="text-[20px] md:text-[30px] font-semibold"> Free Quote </h2>
           <Image src={NortonBadge} alt="Norton Badge" className="hidden md:block"/>
         </div>
